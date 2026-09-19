@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>أخبارنا</title>
+    <link rel="stylesheet" href="../styles/table.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../styles/tricker.css" />
+    <link rel="stylesheet" href="../styles/all.min.css" />
+    <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/normalize.css" />
+  </head>
+  <body>
+<div class="setting-box">
+      <div class="icon">
+        <i class="fa fa-bars"></i>
+      </div>
+      <div class="setting-container">
+        <span class="close-x">X</span>
+
+        <div class="setting-text first">
+          <div class="option-text">
+            <a class="option-span" href="../index.html">الرئيسية</a>
+            <i class="fa-solid fa-house"></i>
+          </div>
+        </div>
+
+        <div class="setting-text">
+          <div class="option-text">
+            <a class="option-span" href="./pages/sports.html">الرياضة</a>
+            <i class="fa-solid fa-futbol"></i>
+          </div>
+        </div>
+
+        <div class="setting-text">
+          <div class="option-text">
+            <a class="option-span" href="./pages/economy.html">الاقتصاد</a>
+            <i class="fa-solid fa-chart-line"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav>
+      <div class="left">
+        <div class="price"><span>$</span><span id="currency"></span> ج.م</div>
+        <div class="time">
+          <span id="temp"></span><span id="humidity"></span
+          ><span id="description"></span> <span id="city"></span>
+        </div>
+      </div>
+    </nav>
+    <div class="center">
+      <h1>أخبارنا</h1>
+      <p>بوابتك الإخبارية الشاملة</p>
+
+      <div class="line"></div>
+    </div>
+    
+
+
+    <main dir="rtl">
+      <p style="text-align: right">جدول ترتيب الدوري المصري الممتاز</p>
+
+      <table id="leagueTable">
+        <thead>
+          <tr>
+            <th>الترتيب</th>
+            <th>الفريق</th>
+            <th>لعب</th>
+            <th>منزل</th>
+            <th>خارج</th>
+            <th>فوز</th>
+            <th>تعادل</th>
+            <th>خسارة</th>
+            <th>له</th>
+            <th>عليه</th>
+            <th>النقاط</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div class="legend">
+        <div class="item">
+          <span class="color champions"></span>
+          <span>مراكز دوري الابطال</span>
+        </div>
+        <div class="item">
+          <span class="color confed"></span>
+          <span>مراكز دوري الهبوط</span>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-top">
+        <div class="footer-left">
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#"><i class="fa-brands fa-github"></i></a>
+        </div>
+        <div class="footer-right">
+          <a href="../index.html">الرئيسية <i class="fa-solid fa-house"></i></a>
+          <a href="./pages/sports.html"
+            >الرياضة <i class="fa-solid fa-trophy"></i
+          ></a>
+          <a href="./pages/economy.html"
+            >الاقتصاد <i class="fa-solid fa-dollar-sign"></i
+          ></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 أخبارنا - جميع الحقوق محفوظة</p>
+      </div>
+    </footer>
+
+    <script>
+      // start nav
+
+      // weather api
+      const weatherCity = `Cairo`;
+      const countryCode = `EG`;
+      const weatherKey = "ab3199dbf67ac8107e758cc858527b99";
+      const weatherEndPoint = `https://api.openweathermap.org/data/2.5/weather?q=${weatherCity},${countryCode}&appid=${weatherKey}&units=metric&lang=ar`;
+      fetch(weatherEndPoint)
+        .then((response) => response.json())
+        .then((data) => {
+          const temp = data.main.temp;
+          const cityName = data.name;
+          const humidity = data.main.humidity;
+          const description = data.weather[0].description;
+          document.getElementById("temp").innerHTML = `درجة الحرارة ℃${temp}`;
+          document.getElementById(
+            "humidity"
+          ).innerHTML = ` الرطوبة ${humidity}`;
+          document.getElementById(
+            "description"
+          ).innerHTML = ` حالة الطقس: (${description}) `;
+          document.getElementById("city").innerHTML = data.name;
+        })
+        .catch((Error) => console.log(Error));
+
+      // currency api
+      const currencyKey = "3c8da38fe19cd241bfa47fcc";
+      const currencyEndPoint = `https://v6.exchangerate-api.com/v6/3c8da38fe19cd241bfa47fcc/latest/USD`;
+      fetch(currencyEndPoint)
+        .then((response) => response.json())
+        .then((data) => {
+          const egp = data.conversion_rates.EGP;
+          document.querySelector("#currency").innerHTML = egp;
+        })
+        .catch((Error) => console.log(Error));
+
+      const apiKey =
+        "09720fd9f61fe1563e54e47d88b1b0fe4d826733e9c1cc294b3de3f69aff68d3";
+      const leagueId = 177;
+      const apiUrl = `https://apiv2.allsportsapi.com/football/?met=Standings&leagueId=${leagueId}&APIkey=${apiKey}`;
+      const tbody = document.querySelector("#leagueTable tbody");
+
+      fetch(apiUrl)
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.success !== 1) {
+            console.error("Error:", data.message);
+            return;
+          }
+          const leagueData = data.result.total;
+          tbody.innerHTML = "";
+          leagueData.forEach((team) => {
+            const row = document.createElement("tr");
+            let rowClass = "";
+            if (team.standing_place_type.includes("CAF Champions League"))
+              rowClass = "champions";
+            if (team.standing_place_type.includes("Relegation"))
+              rowClass = "confed";
+
+            row.innerHTML = `
+        <td><span class="circle2 ${rowClass}">${team.standing_place}</span></td>
+        <td>${team.standing_team}</td>
+        <td>${team.standing_P}</td>
+        <td>${team.standing_HP || 0}</td>
+        <td>${team.standing_AP || 0}</td>
+        <td>${team.standing_W}</td>
+        <td>${team.standing_D}</td>
+        <td>${team.standing_L}</td>
+        <td>${team.standing_F}</td>
+        <td>${team.standing_A}</td>
+        <td><span class="circle">${team.standing_PTS}</span></td>
+      `;
+            tbody.appendChild(row);
+          });
+        })
+        .catch((err) => console.error("Error:", err));
+    </script>
+    <script src="../scripts/ticker.js"></script>
+    <script src="../scripts/main.js"></script>
+  </body>
+</html>

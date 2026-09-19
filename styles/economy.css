@@ -1,0 +1,569 @@
+body {
+  background: #f9fafb;
+  box-sizing: border-box;
+}
+.container {
+  width: 100%;
+  display: flex;
+  flex-flow: wrap row;
+}
+.slider {
+  width: 90%;
+  max-width: 1000px;
+  margin: 40px auto;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 500px;
+  /* opacity?? */
+  opacity: 0.5;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: opacity ease 0.7s;
+}
+
+.slide.active {
+  position: relative;
+  opacity: 1;
+}
+
+#pre,
+#nxt {
+  position: absolute;
+  top: 50%;
+  background: #bfc0c19f;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  font-size: 27px;
+  width: 50px;
+  height: 50px;
+  font-weight: 100;
+  transition: all 0.3s;
+  transform: translateY(-50%);
+  z-index: 100;
+}
+#pre {
+  left: 10px;
+}
+#nxt {
+  right: 10px;
+}
+
+#pre:hover,
+#nxt:hover {
+  background-color: #bfc0c1b9;
+  cursor: pointer;
+}
+
+.content {
+  max-width: 60%;
+  color: white;
+  text-align: right;
+  margin: auto auto;
+  bottom: 60px;
+  right: 60px;
+  position: absolute;
+}
+.category {
+  background: red;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 25px;
+  font-size: 18px;
+}
+
+.content h2 {
+  font-size: 3rem;
+  margin: 15px 0;
+}
+
+.content p {
+  font-size: 1.5rem;
+  color: lightgray;
+  margin-bottom: 20px;
+}
+
+.content button {
+  background: white;
+  border: none;
+  color: blue;
+  line-height: 2;
+  font-size: 18px;
+  font-weight: 100;
+  border-radius: 25px;
+  padding: 10px 25px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+.content button:hover {
+  background: #f1f1f1;
+}
+
+.dots {
+  position: absolute;
+  display: flex;
+  bottom: 15px;
+  width: 100%;
+  justify-content: center;
+  z-index: 100;
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: 0.3s;
+}
+.dot.active {
+  opacity: 1;
+  width: 60px;
+  border-radius: 30px;
+}
+/* // ================================================
+// ================modal Section==================
+// ================================================ */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 16px;
+  padding: 25px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  position: relative;
+  text-align: right;
+  direction: rtl;
+}
+
+.modal-content img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.modal-content h2 {
+  margin: 10px 0;
+  font-size: 1.4rem;
+  color: #222;
+}
+
+.modal-content p {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: crimson;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 20px;
+  cursor: pointer;
+  text-align: center;
+  line-height: 30px;
+}
+
+.close:hover {
+  background: #a30000;
+  transform: rotate(180deg);
+  transition: 0.3s;
+}
+
+/* // ================================================
+// ================globalEconomyNewsSection===========
+// ================================================ */
+
+.global {
+  background: #ffffff;
+  direction: rtl;
+  width: 90%;
+  max-width: 1000px;
+  margin: 40px auto;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+.global-title {
+  direction: rtl;
+  width: 80%;
+  padding-right: 50px;
+  padding-top: 20px;
+}
+.global-cards {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-flow: row wrap;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.global-card {
+  height: 220px;
+  width: 300px;
+  border-radius: 10px;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: all 0.3s ease !important;
+}
+.global-card:hover {
+  cursor: pointer;
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.9));
+  background-repeat: no-repeat;
+  background-size: cover;
+  transform: translateY(-5px) !important;
+}
+
+.global-card button {
+  display: none;
+  background: white;
+  border: none;
+  color: blue;
+  line-height: 2;
+  font-size: 18px;
+  font-weight: 100;
+  border-radius: 25px;
+  padding: 5px 25px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s;
+  /* display: block; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.global-card button:hover {
+  background: #f1f1f1;
+}
+.global-card-content > p {
+  direction: rtl;
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  bottom: 8px;
+  right: 10px;
+}
+/* // ================================================
+// ================MarketsSection=====================
+// ================================================ */
+
+.markets {
+  background: #f2f5ff;
+  direction: rtl;
+  width: 90%;
+  max-width: 1000px;
+  margin: 40px auto;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+  padding: 10px;
+}
+.makets-container {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+.market-title {
+  direction: rtl;
+  padding-top: 20px;
+}
+.EgyptMarket .market-title h3 {
+  line-height: 2;
+  padding: 5px;
+  border-right: #a30000 solid 5px;
+  border-radius: 0px 5px 5px 0px;
+}
+.USMarket .market-title h3 {
+  line-height: 2;
+  padding: 5px;
+  border-right: teal solid 5px;
+  border-radius: 0px 5px 5px 0px;
+}
+
+.EgyptMarket,
+.USMarket {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 10px;
+  width: 45%;
+}
+.market-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 100%;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.image-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.image-wrapper img:hover {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  transform: scale(1.2);
+}
+.percent {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #2ecc71;
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.info {
+  padding: 10px 12px;
+}
+
+.info h3 {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 5px;
+  line-height: 1.4;
+}
+
+.info p {
+  font-size: 14px;
+  color: #777;
+}
+/* // ================================================
+// ================usdExchangeData&goldPriceData===
+// ================================================ */
+
+.card-chart {
+  background: #FFFFFF;
+  direction: rtl;
+  width: 90%;
+  max-width: 1000px;
+  margin: 40px auto;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+  padding: 10px;
+}
+
+.card-header-chart {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-header h3 {
+  font-size: 1.1rem;
+  color: #444;
+  margin: 0;
+}
+
+.current-price {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.gold {
+  color: #d4af37;
+}
+
+.usd {
+  color: #007bff;
+}
+
+.chart-wrapper {
+  position: relative;
+  width: 100%;
+  height: 260px;
+}
+/* ======================================================
+   ================ RWD =================================
+   ====================================================== */
+
+@media (max-width: 1024px) {
+  .content {
+    max-width: 80%;
+    right: 30px;
+    bottom: 40px;
+  }
+
+  .content h2 {
+    font-size: 2.2rem;
+  }
+
+  .content p {
+    font-size: 1.2rem;
+  }
+
+  .global-card {
+    width: 45%;
+  }
+
+  .EgyptMarket,
+  .USMarket {
+    width: 48%;
+  }
+}
+
+@media (max-width: 768px) {
+  .slider {
+    width: 95%;
+  }
+
+  .slide {
+    height: 350px;
+  }
+
+  #pre,
+  #nxt {
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+  }
+
+  .content {
+    max-width: 90%;
+    right: 20px;
+    bottom: 30px;
+  }
+
+  .content h2 {
+    font-size: 1.8rem;
+  }
+
+  .content p {
+    font-size: 1rem;
+  }
+
+  .global-cards {
+    flex-direction: column;
+  }
+
+  .global-card {
+    width: 80%;
+  }
+
+  .makets-container {
+    flex-direction: column;
+  }
+
+  .EgyptMarket,
+  .USMarket {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .slide {
+    height: 250px;
+  }
+
+  .content {
+    position: absolute;
+    max-width: 100%;
+    right: 10px;
+    bottom: 15px;
+    text-align: center;
+  }
+
+  .content h2 {
+    font-size: 1.4rem;
+  }
+
+  .content p {
+    font-size: 0.9rem;
+  }
+
+  .content button {
+    font-size: 0.9rem;
+    padding: 8px 18px;
+  }
+
+  #pre,
+  #nxt {
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+  }
+
+  .global {
+    width: 95%;
+  }
+
+  .global-card {
+    width: 100%;
+    height: 200px;
+  }
+
+  .markets {
+    width: 95%;
+    padding: 5px;
+  }
+
+  .EgyptMarket,
+  .USMarket {
+    width: 100%;
+  }
+
+  .market-card img {
+    height: 120px;
+  }
+
+  .info h3 {
+    font-size: 14px;
+  }
+
+  .info p {
+    font-size: 12px;
+  }
+}

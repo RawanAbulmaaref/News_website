@@ -1,0 +1,23 @@
+.center {
+      text-align: center;
+    }
+
+    h1 {
+      color: #1565ff; 
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #555;
+      font-size: 18px;
+      margin-bottom: 50px;
+    }
+
+    .line {
+      height: 5px;
+      width: 100%;
+      background-color: #1565ff;
+      margin-bottom: 50px;
+      
+    }

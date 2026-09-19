@@ -1,0 +1,310 @@
+ .center {
+      text-align: center;
+      background-color: #fff;
+    }
+
+    h1 {
+      color: #1565ff; 
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #555;
+      font-size: 18px;
+      margin-bottom: 50px;
+    }
+
+    .line {
+      height: 5px;
+      width: 100%;
+      background-color: #1565ff;
+      margin-bottom: 50px;
+      
+    }
+    .ticker {
+      display: flex;
+      align-items: center;
+      height: 42px;
+      background-color: #d10000;
+      color: #fff;
+      overflow: hidden;
+    }
+    .ticker-label {
+      flex-shrink: 0;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      background-color: #7a0000;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: .5px;
+    }
+    .ticker-track {
+      display: flex;
+      gap: 48px;
+      white-space: nowrap;
+      padding-inline-start: 100%;
+      animation: scroll-ticker 40s linear infinite;
+    }
+    .ticker-track:hover {
+      animation-play-state: paused;
+    }
+    .ticker-track span {
+      font-size: 15px;
+    }
+    @keyframes scroll-ticker {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-100%); }
+    }
+    .container {
+  width: 100%;
+  display: flex;
+  flex-flow: wrap row;
+}
+.slider {
+  width: 90%;
+  max-width: 1000px;
+  margin: 40px auto;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 550px;
+  /* opacity?? */
+  opacity: 0.5;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: opacity ease .7s;
+}
+
+.slide.active {
+  position: relative;
+  opacity: 1;
+}
+
+#pre,
+#nxt {
+  position: absolute;
+  top: 50%;
+  background: #bfc0c19f;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  font-size: 27px;
+  width: 50px;
+  height: 50px;
+  font-weight: 100;
+  transition: all 0.3s;
+  transform: translateY(-50%);
+  z-index: 100;
+}
+#pre {
+  left: 10px;
+}
+#nxt {
+  right: 10px;
+}
+
+#pre:hover,
+#nxt:hover {
+  background-color: #bfc0c1b9;
+  cursor: pointer;
+}
+
+.content {
+  max-width: 60%;
+  color: white;
+  text-align: right;
+  margin: auto auto;
+  bottom: 60px;
+  right: 60px;
+  position: absolute;
+}
+.category {
+  background: red;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 25px;
+  font-size: 18px;
+}
+
+.content h2 {
+  font-size: 3rem;
+  margin: 15px 0;
+}
+
+.content p {
+  font-size: 1.5rem;
+  color: lightgray;
+  margin-bottom: 20px;
+}
+
+.content button {
+  background: white;
+  border: none;
+  color: blue;
+  line-height: 2;
+  font-size: 18px;
+  font-weight: 100;
+  border-radius: 25px;
+  padding: 10px 25px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+.content button:hover {
+  background: #f1f1f1;
+}
+
+.dots {
+  position: absolute;
+  display: flex;
+  bottom: 15px;
+  width: 100%;
+  justify-content: center;
+  z-index: 100;
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: 0.3s;
+}
+.dot.active {
+  opacity: 1;
+  width: 60px;
+  border-radius: 30px;
+}
+/* // ================================================
+// ================modal Section==================
+// ================================================ */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 16px;
+  padding: 25px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  position: relative;
+  text-align: right;
+  direction: rtl;
+}
+
+.modal-content img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.modal-content h2 {
+  margin: 10px 0;
+  font-size: 1.4rem;
+  color: #222;
+}
+
+.modal-content p {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: crimson;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 20px;
+  cursor: pointer;
+  text-align: center;
+  line-height: 30px;
+}
+
+.close:hover {
+  background: #a30000;
+  transform: rotate(180deg);
+  transition: 0.3s;
+}
+
+
+/* =============================
+   كروت الأخبار
+============================= */
+.global-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px 40px;
+}
+
+.news-card {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.news-card:hover {
+  transform: translateY(-5px);
+}
+
+.news-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.news-card-content {
+  padding: 15px;
+}
+
+.news-card-content h3 {
+  font-size: 18px;
+  margin: 0 0 10px;
+}
+
+.news-card-content button {
+  background-color: #1565ff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.news-card-content button:hover {
+  background-color: #0d47a1;
+}
